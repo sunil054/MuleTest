@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<mule xmlns:http="http://www.mulesoft.org/schema/mule/http" xmlns="http://www.mulesoft.org/schema/mule/core"
+	xmlns:doc="http://www.mulesoft.org/schema/mule/documentation"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.mulesoft.org/schema/mule/core http://www.mulesoft.org/schema/mule/core/current/mule.xsd
+http://www.mulesoft.org/schema/mule/http http://www.mulesoft.org/schema/mule/http/current/mule-http.xsd">
+	<http:listener-config name="HTTP_Listener_config" doc:name="HTTP Listener config" doc:id="219c020a-8612-4551-95aa-66ce0aefe866" >
+		<http:listener-connection host="0.0.0.0" port="8081" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config1" doc:name="HTTP Listener config" doc:id="f36658a5-257e-4a88-b32f-ed906fd8f23e" >
+		<http:listener-connection host="0.0.0.0" port="8082" />
+	</http:listener-config>
+	<http:listener-config name="HTTP_Listener_config2" doc:name="HTTP Listener config" doc:id="53c38991-6435-4100-b680-722e6de3a4b5" >
+		<http:listener-connection host="0.0.0.0" port="8085" />
+	</http:listener-config>
+	<flow name="HelloWordFlow" doc:id="82071ab2-ef4f-43be-a04d-a807865dec37" >
+		<http:listener doc:name="/GET HelloWord" doc:id="7d3963b9-5b8b-4ea7-aa71-854e7d1aafb7" path="/helloword" config-ref="HTTP_Listener_config2"/>
+		<logger level="INFO" doc:name="Logger" doc:id="94e9a628-6bca-4f9f-8881-746c5418b280" message='"Message got Invoked"'/>
+		<set-payload value='["employeeId":"123", "employeeName":"Sunil Muki"]' doc:name="Set Payload" doc:id="a770d0af-4ae9-4847-aff0-0c794491232b" />
+		<logger level="INFO" doc:name="Logger" doc:id="fa61d087-59e0-4ca9-b693-0c85d56ada77" message='"This is my second loger steps"'/>
+	</flow>
+</mule>
